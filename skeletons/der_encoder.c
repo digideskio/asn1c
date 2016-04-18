@@ -144,10 +144,10 @@ der_write_tags(asn_TYPE_descriptor_t *sd,
 		lens[i] = overall_length - lens[i];
 	}
 
-	if(!cb) return overall_length - struct_length;
-
 	ASN_DEBUG("%s %s TL sequence (%d elements)",
 		cb?"Encoding":"Estimating", sd->name, tags_count);
+
+	if(!cb) return overall_length - struct_length;
 
 	/*
 	 * Encode the TL sequence for real.

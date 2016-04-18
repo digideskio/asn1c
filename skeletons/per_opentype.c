@@ -205,13 +205,6 @@ uper_open_type_get_complex(asn_codec_ctx_t *ctx, asn_TYPE_descriptor_t *td,
 	padding = pd->moved % 8;
 	if(padding) {
 		int32_t pvalue;
-		if(padding > 7) {
-			ASN_DEBUG("Too large padding %d in open type",
-				(int)padding);
-			rv.code = RC_FAIL;
-			UPDRESTOREPD;
-			return rv;
-		}
 		padding = 8 - padding;
 		ASN_DEBUG("Getting padding of %d bits", (int)padding);
 		pvalue = per_get_few_bits(pd, padding);
